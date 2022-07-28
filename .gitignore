@@ -2,7 +2,6 @@
 .upm
 .breakpoints
 poetry.lock
-pyproject.toml
 main.py
 test.txt
 

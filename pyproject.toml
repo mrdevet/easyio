@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "easyio"
+version = "0.1.0"
+description = "Easy-to-use input and output functions"
+readme = "README.md"
+authors = ["Casey Devet <cjdevet@gmail.com>"]
+license = {
+    text = "MIT License"
+    file = "LICENSE"
+}
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["input", "output", "io"]
+requires-python = ">=3.6git a"
+
+[project.urls]
+Homepage = "https://github.com/mrdevet/easyio"
+
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
