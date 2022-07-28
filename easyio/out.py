@@ -1,12 +1,8 @@
 '''
-Helper functions for easy input and output.
+Helper functions for easy output.
 
-This package contains a variety of helper functions that 
-make input and output in python easier.
-
-NOTE: If you import this package using 
-"from easyio import *", the built-in input() function will 
-be overwritten with the input() function from this package.
+This module contains helper functions that make output in 
+python easier.
 '''
 
 # Copyright 2022 Casey Devet
@@ -17,30 +13,22 @@ be overwritten with the input() function from this package.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# This module provides some useful functions that make
-# teaching Python a bit easier.  To make these functions 
-# available in your program, import them using the command:
-# from easyio import *
 
-_submodules = [
-    "inp",
-    "out",
-    "types"
+import sys
+
+
+def error (message, status=0):
+    '''
+    Print an error message to the console and end the 
+    program.
+
+    An optional status code can be provided.
+    '''
+    
+    print(f"\n{message}\n", file=sys.stderr)
+    sys.exit(status)
+
+
+__all__ = [
+    "error"
 ]
-
-import importlib as _imp
-
-__all__ = []
-
-for _modname in _submodules:
-    _mod = _imp.import_module(f".{_modname}", package="easyio")
-    for _objname in _mod.__all__:
-        globals()[_objname] = getattr(_mod, _objname)
-        __all__.append(_objname)
-    del globals()[_modname]
-
-del _objname
-del _mod
-del _modname
-del _submodules
-del _imp
