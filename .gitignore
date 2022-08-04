@@ -4,6 +4,7 @@
 poetry.lock
 main.py
 test.txt
+upload.sh
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

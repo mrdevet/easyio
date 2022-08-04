@@ -14,6 +14,28 @@ values to a variety of types.
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
+def nat (value):
+    '''
+    Convert to a natural number (1, 2, 3, ...).
+    
+    If the value is a natural number, the result will
+    be an int object.  If given a numerical value with 
+    decimals, it will be truncated (rounded towards 0).  
+    If the value is not a natural number there will be 
+    an error.
+    '''
+
+    try:
+        int_val = int(value)
+    except ValueError:
+        raise ValueError(f"Invalid natural number: {value}") from None
+
+    if int_val < 1:
+        raise ValueError(f"Invalid natural number (must be positive): {int_val}")
+
+    return int_val
+
+
 def number (value):
     '''
     Convert to a numerical value.
@@ -22,12 +44,58 @@ def number (value):
     decimal numbers will be returned as float objects.
     '''
 
-    num = float(value)
+    try:
+        num = float(value)
+    except ValueError:
+        raise ValueError(f"Invalid number: {value}")
+        
     if num.is_integer():
-        num = int(num)
-    return num
+        return int(num)
+    else:
+        return num
+
+
+def positive (value):
+    '''
+    Convert to a positive number.
+    
+    Whole numbers will be returned as int objects and 
+    decimal numbers will be returned as float objects.
+    '''
+
+    num_val = number(value)
+
+    if num_val <= 0:
+        raise ValueError(f"Invalid positive number: {num_val}")
+
+    return num_val
+
+
+def whole (value):
+    '''
+    Convert to a whole number (0, 1, 2, 3, ...).
+    
+    If the value is a natural number, the result will
+    be an int object.  If given a numerical value with 
+    decimals, it will be truncated (rounded towards 0).  
+    If the value is not a natural number there will be 
+    an error.
+    '''
+
+    try:
+        int_val = int(value)
+    except ValueError:
+        raise ValueError(f"Invalid whole number: {value}") from None
+
+    if int_val < 0:
+        raise ValueError(f"Invalid whole number (must be non-negative): {int_val}")
+
+    return int_val
 
 
 __all__ = [
-    "number"
+    "nat",
+    "number",
+    "positive",
+    "whole"
 ]

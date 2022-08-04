@@ -78,11 +78,35 @@ error(message, status=0)
 The following functions are provided to convert strings to other useful types.  These are meant to be used as the `type` argument for the `input()` function.
 
 ```
+nat(value)
+    Convert to a natural number (1, 2, 3, ...).
+    
+    If the value is a natural number, the result will
+    be an int object.  If given a numerical value with 
+    decimals, it will be truncated (rounded towards 0).  
+    If the value is not a natural number there will be 
+    an error.
+
 number(value)
     Convert to a numerical value.
     
     Whole numbers will be returned as int objects and 
     decimal numbers will be returned as float objects.
+
+positive(value)
+    Convert to a positive number.
+    
+    Whole numbers will be returned as int objects and 
+    decimal numbers will be returned as float objects.
+
+whole(value)
+    Convert to a whole number (0, 1, 2, 3, ...).
+    
+    If the value is a natural number, the result will
+    be an int object.  If given a numerical value with 
+    decimals, it will be truncated (rounded towards 0).  
+    If the value is not a natural number there will be 
+    an error.
 ```
 
 ## License
